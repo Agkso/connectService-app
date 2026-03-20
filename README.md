@@ -1,50 +1,259 @@
-# Welcome to your Expo app 👋
+# 📱 ConnectService App (Mobile)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+![React Native](https://img.shields.io/badge/React%20Native-0.7x-blue)
+![Expo](https://img.shields.io/badge/Expo-Framework-black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
+![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
+![License](https://img.shields.io/badge/license-MIT-green)
 
-## Get started
+Aplicativo mobile do **ConnectService**, permitindo que **prestadores** e **empregadores** interajam em tempo real para contratação de serviços.
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+# 📌 Sobre o Projeto
 
-2. Start the app
+O app mobile tem como foco:
 
-   ```bash
-   npx expo start
-   ```
+* 📲 mobilidade total
+* ⚡ respostas rápidas
+* 🔔 notificações em tempo real
 
-In the output, you'll find options to open the app in a
+Permitindo que o prestador aceite serviços rapidamente e o empregador acompanhe tudo direto pelo celular.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+# 🧱 Arquitetura
 
-## Get a fresh project
+Arquitetura baseada em separação de responsabilidades:
 
-When you're ready, run:
-
-```bash
-npm run reset-project
+```id="d8f2k1"
+Screens → Components → Hooks → Services → API
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-## Learn more
+# 🛠️ Tecnologias Utilizadas
 
-To learn more about developing your project with Expo, look at the following resources:
+* React Native
+* Expo
+* TypeScript
+* React Navigation
+* React Query
+* Axios
+* Expo Notifications
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+---
 
-## Join the community
+# 📦 Estrutura do Projeto
 
-Join our community of developers creating universal apps.
+```id="m3n9k2"
+src/
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+screens/        → telas da aplicação
+components/     → componentes reutilizáveis
+hooks/          → hooks customizados
+services/       → integração com API
+navigation/     → rotas e navegação
+store/          → estado global (se necessário)
+utils/          → helpers
+types/          → tipagens
+```
+
+---
+
+# 🔁 Fluxo da Aplicação
+
+```id="z7x6c5"
+User → Screen → Hook → Service → API → Backend
+```
+
+---
+
+# 📚 Funcionalidades
+
+### 👤 Empregador
+
+* Criar anúncios de serviço
+* Visualizar prestadores disponíveis
+* Acompanhar status em tempo real
+* Avaliar prestadores
+
+---
+
+### 🧑‍🔧 Prestador
+
+* Receber notificações instantâneas
+* Aceitar ou recusar serviços
+* Visualizar histórico
+* Atualizar disponibilidade
+
+---
+
+### 🔔 Sistema
+
+* Push notifications em tempo real
+* Atualização de status do serviço
+* Integração futura com WhatsApp
+
+---
+
+# ⚙️ Requisitos
+
+* Node.js 18+
+* Expo CLI
+* Android Studio ou Xcode
+
+---
+
+# 🚀 Como rodar o projeto
+
+### 1️⃣ Clonar repositório
+
+```bash id="b2c3d4"
+git clone https://github.com/seu-repo/connectservice-app.git
+cd connectservice-app
+```
+
+---
+
+### 2️⃣ Instalar dependências
+
+```bash id="e5f6g7"
+npm install
+```
+
+---
+
+### 3️⃣ Configurar variáveis de ambiente
+
+Criar arquivo `.env`:
+
+```env id="h8i9j0"
+API_URL=http://localhost:8080
+```
+
+---
+
+### 4️⃣ Rodar o app
+
+```bash id="k1l2m3"
+npx expo start
+```
+
+---
+
+### 5️⃣ Executar no dispositivo
+
+* 📱 Expo Go (Android/iOS)
+* 🤖 Emulador Android
+* 🍎 Simulador iOS
+
+---
+
+# 🔗 Integração com Backend
+
+Comunicação com API via:
+
+```id="n4o5p6"
+Axios + React Query
+```
+
+Exemplo:
+
+```typescript id="q7r8s9"
+export const useGetJobs = () => {
+  return useQuery({
+    queryKey: ["jobs"],
+    queryFn: async () => {
+      const response = await api.get("/jobs");
+      return response.data;
+    },
+  });
+};
+```
+
+---
+
+# 🔔 Notificações
+
+Uso de:
+
+```id="t0u1v2"
+Expo Notifications
+```
+
+Funcionalidades:
+
+* Push em tempo real
+* Aviso de novos serviços
+* Atualização de status
+
+---
+
+# 🔐 Autenticação
+
+* JWT
+* Armazenamento seguro (AsyncStorage/SecureStore)
+* Interceptadores Axios
+
+---
+
+# 🎨 UI/UX
+
+* Interface mobile-first
+* Design simples e direto
+* Foco em rapidez de ação
+* Feedback visual (loading, erro, sucesso)
+
+---
+
+# 🧠 Boas Práticas
+
+* Componentização
+* Hooks reutilizáveis
+* Tipagem forte com TypeScript
+* Separação de camadas
+* Código limpo
+
+---
+
+# 🧭 Roadmap
+
+* [ ] Login e cadastro
+* [ ] Dashboard do prestador
+* [ ] Dashboard do empregador
+* [ ] Notificações push
+* [ ] Geolocalização
+* [ ] Chat em tempo real
+* [ ] Integração com pagamentos
+
+---
+
+# 🤝 Contribuição
+
+1. Fork o projeto
+2. Criar branch (`feature/nova-feature`)
+3. Commit (`git commit -m 'feat: nova feature'`)
+4. Push (`git push origin feature/nova-feature`)
+5. Abrir Pull Request
+
+---
+
+# 📄 Licença
+
+Este projeto está sob licença MIT.
+
+---
+
+# 💡 Observações
+
+O app será peça chave do ecossistema e evoluirá para:
+
+* experiência em tempo real
+* alta performance
+* integração com serviços externos
+* possível versão offline-first
+
+---
+
+🔥 Projeto focado em experiência mobile e escala real.
